@@ -14,7 +14,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "rochaut-mask-number": [
+        "dist/rochaut-mask-number/rochaut-mask-number",
+        "dist/rochaut-mask-number"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

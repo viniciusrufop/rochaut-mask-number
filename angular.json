@@ -2,5 +2,167 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "rochaut-mask-number": {
+      "projectType": "library",
+      "root": "projects/rochaut-mask-number",
+      "sourceRoot": "projects/rochaut-mask-number/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/rochaut-mask-number/tsconfig.lib.json",
+            "project": "projects/rochaut-mask-number/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/rochaut-mask-number/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rochaut-mask-number/src/test.ts",
+            "tsConfig": "projects/rochaut-mask-number/tsconfig.spec.json",
+            "karmaConfig": "projects/rochaut-mask-number/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rochaut-mask-number/tsconfig.lib.json",
+              "projects/rochaut-mask-number/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rochaut-mask-number-example": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/rochaut-mask-number-example",
+      "sourceRoot": "projects/rochaut-mask-number-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/rochaut-mask-number-example",
+            "index": "projects/rochaut-mask-number-example/src/index.html",
+            "main": "projects/rochaut-mask-number-example/src/main.ts",
+            "polyfills": "projects/rochaut-mask-number-example/src/polyfills.ts",
+            "tsConfig": "projects/rochaut-mask-number-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/rochaut-mask-number-example/src/favicon.ico",
+              "projects/rochaut-mask-number-example/src/assets"
+            ],
+            "styles": [
+              "projects/rochaut-mask-number-example/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/rochaut-mask-number-example/src/environments/environment.ts",
+                  "with": "projects/rochaut-mask-number-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "rochaut-mask-number-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "rochaut-mask-number-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "rochaut-mask-number-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rochaut-mask-number-example/src/test.ts",
+            "polyfills": "projects/rochaut-mask-number-example/src/polyfills.ts",
+            "tsConfig": "projects/rochaut-mask-number-example/tsconfig.spec.json",
+            "karmaConfig": "projects/rochaut-mask-number-example/karma.conf.js",
+            "assets": [
+              "projects/rochaut-mask-number-example/src/favicon.ico",
+              "projects/rochaut-mask-number-example/src/assets"
+            ],
+            "styles": [
+              "projects/rochaut-mask-number-example/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rochaut-mask-number-example/tsconfig.app.json",
+              "projects/rochaut-mask-number-example/tsconfig.spec.json",
+              "projects/rochaut-mask-number-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/rochaut-mask-number-example/e2e/protractor.conf.js",
+            "devServerTarget": "rochaut-mask-number-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "rochaut-mask-number-example:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "rochaut-mask-number"
 }

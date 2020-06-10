@@ -1,0 +1,192 @@
+<div class="container-fluid pt-3">
+
+  <mat-accordion multi>
+    <mat-expansion-panel class="shadow pt-2 pb-2 bg-white rounded">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="fs-30 fw-300">Propriedades aceitas</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-container>
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25 tx-color-blue">[decimals]: string</span>
+            </div>
+            <div>
+              <span class="fs-20">Valor Defualt: </span>
+              <span class="fs-20 fw-500">' '</span>
+            </div>
+            <div>
+              <span class="fs-20">Descrição: </span>
+              <span class="fs-20 fw-300">Define a quantidade máxima de números decimais</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25 tx-color-blue">[units]: string</span>
+            </div>
+            <div>
+              <span class="fs-20">Valor Defualt: </span>
+              <span class="fs-20 fw-500">' '</span>
+            </div>
+            <div>
+              <span class="fs-20">Descrição: </span>
+              <span class="fs-20 fw-300">Define a quantidade máxima de unidades</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25 tx-color-blue">[allowLess]: boolean</span>
+            </div>
+            <div>
+              <span class="fs-20">Valor Defualt: </span>
+              <span class="fs-20 fw-500">true</span>
+            </div>
+            <div>
+              <span class="fs-20">Descrição: </span>
+              <span class="fs-20 fw-300">Habilita / Desabilita valores negativos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25 tx-color-blue">[comma]: boolean</span>
+            </div>
+            <div>
+              <span class="fs-20">Valor Defualt: </span>
+              <span class="fs-20 fw-500">true</span>
+            </div>
+            <div>
+              <span class="fs-20">Descrição: </span>
+              <span class="fs-20 fw-300">Definide a separação dos números por '.' ou ',', sendo true a separação por ','</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25 tx-color-blue">[integer]: boolean</span>
+            </div>
+            <div>
+              <span class="fs-20">Valor Defualt: </span>
+              <span class="fs-20 fw-500">false</span>
+            </div>
+            <div>
+              <span class="fs-20">Descrição: </span>
+              <span class="fs-20 fw-300">Habilita / Desabilita números inteiros</span>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="shadow pt-2 pb-2 bg-white rounded">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="fs-30 fw-300">Exemplos</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-container>
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25">Descrição: </span>
+              <span class="fs-20 fw-300 tx-color-blue">Permite positivos, negativos e separação por vírgula sem restrição de unidades ou decimais</span>
+            </div>
+            <div>
+              <span class="fs-20">Code: </span>
+              <span class="fs-20">&lt;input type="text" rochautMask /&gt;</span>
+            </div>
+            <div>
+              <input type="text" rochautMask />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25">Descrição: </span>
+              <span class="fs-20 fw-300 tx-color-blue">Permite positivos e negativos inteiros sem restrição de unidades</span>
+            </div>
+            <div>
+              <span class="fs-20">Code: </span>
+              <span class="fs-20">&lt;input type="text" rochautMask [integer]="true" /&gt;</span>
+            </div>
+            <div>
+              <input type="text" rochautMask [integer]="true" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25">Descrição: </span>
+              <span class="fs-20 fw-300 tx-color-blue">Permite positivos e negativos com no máximo duas casas decimais</span>
+            </div>
+            <div>
+              <span class="fs-20">Code: </span>
+              <span class="fs-20">&lt;input type="text" rochautMask decimals="2" /&gt;</span>
+            </div>
+            <div>
+              <input type="text" rochautMask decimals="2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25">Descrição: </span>
+              <span class="fs-20 fw-300 tx-color-blue">Permite positivos com duas unidades e dois decimais</span>
+            </div>
+            <div>
+              <span class="fs-20">Code: </span>
+              <span class="fs-20">&lt;input type="text" [allowLess]="false" units="2" decimals="2" /&gt;</span>
+            </div>
+            <div>
+              <input type="text" rochautMask [allowLess]="false" units="2" decimals="2" />
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+          <div class="col">
+            <div>
+              <span class="fs-25">Descrição: </span>
+              <span class="fs-20 fw-300 tx-color-blue">Permite positivos e negativos com três unidades e sepação por ponto</span>
+            </div>
+            <div>
+              <span class="fs-20">Code: </span>
+              <span class="fs-20">&lt;input type="text" units="3" [comma]="false" /&gt;</span>
+            </div>
+            <div>
+              <input type="text" rochautMask units="3" [comma]="false" />
+            </div>
+          </div>
+        </div>
+      </ng-container>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+
+  <router-outlet></router-outlet>
+</div>
+
+
+
