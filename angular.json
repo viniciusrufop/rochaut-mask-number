@@ -57,7 +57,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rochaut-mask-number-example",
+            "outputPath": "docs",
             "index": "projects/rochaut-mask-number-example/src/index.html",
             "main": "projects/rochaut-mask-number-example/src/main.ts",
             "polyfills": "projects/rochaut-mask-number-example/src/polyfills.ts",
