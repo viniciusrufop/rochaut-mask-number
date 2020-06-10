@@ -31,6 +31,16 @@ Adicionar no html
  <input type="text" [allowLess]="false" units="2" decimals="2" />
 ```
 
+## Propriedades
+| Nome          | Tipo | Valor Default | Descrição |
+| :--- | :--- | :---: | :--- |
+| decimals      | string | ' ' | Define a quantidade máxima de números decimais |
+| units      | string | ' ' | Define a quantidade máxima de unidades |
+| allowLess      | boolean | true | Habilita / Desabilita valores negativos |
+| comma      | boolean | true | Definide a separação dos números por '.' (ponto) ou ',' (vírgula), sendo true a separação por ',' |
+| integer      | boolean | false | Habilita / Desabilita números inteiros |
+
+
 # RochautMaskNumber
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
