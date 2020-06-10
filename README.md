@@ -1,3 +1,36 @@
+# Máscara de números
+
+Para testar funcionalidade bastar acessar o link [Teste da aplicação](https://viniciusrufop.github.io/rochaut-mask-number/)
+
+## Instalar dependência
+Rodar comando `npm install rochaut-mask-number`.
+
+## Exemplo simples
+Adicionar módulo `RochautMaskNumberModule`
+```
+import { NgModule } from '@angular/core';
+import { RochautMaskNumberModule } from 'rochaut-mask-number';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    ...
+    RochautMaskNumberModule,
+    ...
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+Adicionar no html
+```
+ <input type="text" [allowLess]="false" units="2" decimals="2" />
+```
+
 # RochautMaskNumber
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
