@@ -12,7 +12,7 @@ import { RochautMaskNumberDirective } from './rochaut-mask-number.directive';
   imports: [
   ],
   exports: [
-    RochautMaskNumberComponent,
+    // RochautMaskNumberComponent,
     RochautMaskNumberDirective
   ]
 })

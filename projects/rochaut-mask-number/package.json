@@ -5,6 +5,10 @@
     "@angular/common": "^9.1.9",
     "@angular/core": "^9.1.9"
   },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/viniciusrufop/rochaut-mask-number"
+  },
   "dependencies": {
     "tslib": "^1.10.0"
   }

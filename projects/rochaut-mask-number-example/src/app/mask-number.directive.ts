@@ -7,9 +7,9 @@ import {
 } from '@angular/core';
 
 @Directive({
-  selector: '[rochautMask]',
+  selector: '[maskNumber]',
 })
-export class RochautMaskNumberDirective implements OnInit {
+export class MaskNumberDirective implements OnInit {
   @Input() decimals: string;
   @Input() units: string;
   @Input() allowLess: boolean;
@@ -172,7 +172,7 @@ export class RochautMaskNumberDirective implements OnInit {
       && this.thousandSeparator
       && (event.target['selectionStart'] === event.target['selectionEnd'])
       && ((this.comma && !this.el.nativeElement.value.includes(','))
-        || (!this.comma && !this.el.nativeElement.value.includes('.')));
+      || (!this.comma && !this.el.nativeElement.value.includes('.')));
   }
 
 }

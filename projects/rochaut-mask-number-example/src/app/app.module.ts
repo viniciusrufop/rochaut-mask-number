@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { RochautMaskNumberModule } from 'rochaut-mask-number';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MaskNumberDirective } from './mask-number.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MaskNumberDirective
   ],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     RochautMaskNumberModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

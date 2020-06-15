@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start-mask": "ng serve rochaut-mask-number-example",
+    "example": "ng serve rochaut-mask-number-example",
     "lib:build": "ng build --prod rochaut-mask-number",
     "lib:package": "cd dist/rochaut-mask-number && npm pack",
     "page:build": "ng build --prod rochaut-mask-number-example --base-href=https://viniciusrufop.github.io/rochaut-mask-number/"
