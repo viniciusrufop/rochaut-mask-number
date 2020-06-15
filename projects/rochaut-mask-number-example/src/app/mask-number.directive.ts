@@ -42,6 +42,9 @@ export class MaskNumberDirective implements OnInit {
 
       if ((next && !String(next).match(this.regex)) || (next.charAt(0) === '.' || next.charAt(0) === ',')) {
         this.el.nativeElement.value = '';
+      } else if (this.thousandSeparator) {
+        event.preventDefault();
+        this.el.nativeElement.value = this.formatThousandSeparator(next);
       }
     }, 100);
 
@@ -52,8 +55,8 @@ export class MaskNumberDirective implements OnInit {
     // Allow Backspace, tab, end, and home keys
     if ((this.specialKeys.indexOf(event.key) !== -1) || (event.key === 'v' && event.ctrlKey) || (event.key === 'c' && event.ctrlKey)) {
       if (this.clearThousandSeparator(event)) {
-        this.el.nativeElement.value.slice(0, -1);
-        this.el.nativeElement.value = this.formatThousandSeparator(this.el.nativeElement.value);
+        event.preventDefault();
+        this.el.nativeElement.value = this.formatThousandSeparator(this.el.nativeElement.value.slice(0, -1));
       }
       return;
     }
@@ -65,24 +68,18 @@ export class MaskNumberDirective implements OnInit {
     let next: string = current.concat(value);
 
     if (event.key === 'Unidentified') {
-      console.log('1');
       setTimeout(() => this.el.nativeElement.value = this.el.nativeElement.value.slice(0, -1), 100);
     } else if ((next && !String(next).match(this.regex)) && (event.target['selectionStart'] === event.target['selectionEnd']))  {
-      console.log('2');
       event.preventDefault();
     } else if (!String(event.key).match(this.numRegex) && (event.target['selectionStart'] !== event.target['selectionEnd']))  {
-      console.log('3');
       event.preventDefault();
       this.el.nativeElement.value = '';
     } else if ((event.key === ',' || event.key === '.') && current.length === 0) {
-      console.log('4');
       event.preventDefault();
     } else if (event.key === ',' || event.key === '.') {
-      console.log('5');
       event.preventDefault();
       this.el.nativeElement.value = next;
     } else if (this.thousandSeparator && (event.target['selectionStart'] === event.target['selectionEnd'])) {
-      console.log('6');
       event.preventDefault();
       this.el.nativeElement.value = next.includes(this.comma ? ',' : '.') ? next : this.formatThousandSeparator(next);
     }
@@ -110,7 +107,7 @@ export class MaskNumberDirective implements OnInit {
 
     const reg1 = '^' + `${this.allowLess ? '-?' : ''}` + '([0-9]{0,' + this.units + '})' + `${this.integer ? '$' : '([\,\.]{0,1})$'}`;
     const reg2 = '^' + `${this.allowLess ? '-?' : ''}` + '([0-9]{0,' + this.units + '})([\,\.]{0,1})([0-9]{0,' + this.decimals + '})$';
-    const reg3 = `^-?(([0-9]{1,3})(\\${this.comma ? '.' : ','}?)){0,}((\\${this.comma ? ',' : '.'}?)([0-9]{0,2}))$`;
+    const reg3 = `^${this.allowLess ? '-?' : ''}(([0-9]{1,3})(\\${this.comma ? '.' : ','}?)){0,}((\\${this.comma ? ',' : '.'}?)([0-9]{0,2}))$`;
 
     if (this.thousandSeparator) {
       return reg3;
@@ -135,6 +132,14 @@ export class MaskNumberDirective implements OnInit {
   }
 
   private formatThousandSeparator(value): string {
+    let decimais: string = '';
+
+    let separator = this.comma ? ',' : '.';
+    if (value.includes(separator)) {
+      decimais = value.slice(value.indexOf(separator));
+      value = value.substring(0,value.indexOf(separator))
+    }
+
     let myArray = value.split('');
 
     let negativo = (myArray[0] === '-');
@@ -142,8 +147,6 @@ export class MaskNumberDirective implements OnInit {
     myArray = value.replace(/[^0-9]/g, '').split('');
 
     const arrayLength: number = myArray.length;
-
-    console.log(myArray);
 
     if (arrayLength > 3) {
 
@@ -162,9 +165,7 @@ export class MaskNumberDirective implements OnInit {
 
     if (negativo) { myArray.splice(0, 0, '-'); }
 
-    const retorno = myArray.join('');
-
-    return retorno;
+    return myArray.join('') + decimais;
   }
 
   private clearThousandSeparator(event: KeyboardEvent): boolean {
@@ -172,7 +173,7 @@ export class MaskNumberDirective implements OnInit {
       && this.thousandSeparator
       && (event.target['selectionStart'] === event.target['selectionEnd'])
       && ((this.comma && !this.el.nativeElement.value.includes(','))
-      || (!this.comma && !this.el.nativeElement.value.includes('.')));
+        || (!this.comma && !this.el.nativeElement.value.includes('.')));
   }
 
 }
